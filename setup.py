@@ -1,8 +1,8 @@
 import setuptools
 
 setuptools.setup(
-    name="my_project",
-    packages=setuptools.find_packages(exclude=["my_project_tests"]),
+    name="population_analysis",
+    packages=setuptools.find_packages(exclude=["population_analysis_tests"]),
     install_requires=[
         "dagster_dbt",
         "dagster_duckdb_pandas",
