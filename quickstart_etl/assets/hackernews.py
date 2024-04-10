@@ -94,16 +94,3 @@ def most_frequent_words(context: AssetExecutionContext) -> MaterializeResult:
 
     # Attach the Markdown content as metadata to the asset
     return MaterializeResult(metadata={"plot": MetadataValue.md(md_content)})
-
-
-@asset(deps=[topstories], group_name="hackernews", compute_kind="Python")
-def topstory_domains():
-    """Get the domain of the top 100 stories on HackerNews."""
-    topstories = pd.read_csv("data/topstories.csv")
-    domains = topstories["url"].str.split("/").str[2].value_counts()
-
-    os.makedirs("data", exist_ok=True)
-    with open("data/topstory_domains.json", "w") as f:
-        json.dump(domains.to_dict(), f)
-
-    return domains.to_dict()
