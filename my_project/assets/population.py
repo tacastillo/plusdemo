@@ -37,7 +37,8 @@ def continent_population(context: AssetExecutionContext , database: DuckDBResour
     query = """
         select
             region as continent,
-            count(1) as population_count
+            count(1) as population_count,
+            max(1) as population_max,
         from population.country_population
         group by region
     """
