@@ -52,6 +52,17 @@ def topstories(context: AssetExecutionContext) -> MaterializeResult:
     )
 
 
+@asset(deps=[topstories], group_name="hackernews", compute_kind="Python")
+def topstory_domains():
+    """Get the domain of the top 100 stories on HackerNews."""
+    topstories = pd.read_csv("data/topstories.csv")
+    domains = topstories["url"].str.split("/").str[2].value_counts()
+
+    os.makedirs("data", exist_ok=True)
+    with open("data/topstory_domains.json", "w") as f:
+        json.dump(domains.to_dict(), f)
+
+
 @asset(deps=[topstories], group_name="hackernews", compute_kind="Plot")
 def most_frequent_words(context: AssetExecutionContext) -> MaterializeResult:
     """Get the top 25 most frequent words in the titles of the top 100 HackerNews stories."""
