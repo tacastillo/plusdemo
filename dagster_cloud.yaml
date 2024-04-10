@@ -1,4 +1,4 @@
 locations:
 - code_source:
-    package_name: quickstart_etl
+    package_name: population_analysis
   location_name: plusdemo

@@ -1,0 +1,12 @@
+version: 2
+
+
+models:
+  - name: population_summary
+    columns:
+      - name: country
+        tests:
+          - unique
+      - name: something
+        tests:
+          - unique

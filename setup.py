@@ -1,14 +1,23 @@
-from setuptools import find_packages, setup
+import setuptools
 
-setup(
-    name="quickstart_etl",
-    packages=find_packages(exclude=["quickstart_etl_tests"]),
+setuptools.setup(
+    name="my_project",
+    packages=setuptools.find_packages(exclude=["my_project_tests"]),
     install_requires=[
-        "dagster",
+        "dagster_dbt",
+        "dagster_duckdb_pandas",
+        "dagster_duckdb",
+        "dagster_snowflake_pandas",
+        "dagster_snowflake",
         "dagster-cloud",
-        "boto3",
+        "dagster-dbt",
+        "dagster-webserver",
+        "dagster",
+        "dbt-duckdb",
+        "dbt-snowflake",
+        "duckdb",
+        "lxml",
         "pandas",
-        "matplotlib",
+        "pytest",
     ],
-    extras_require={"dev": ["dagster-webserver", "pytest"]},
 )
