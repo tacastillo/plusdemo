@@ -1,4 +1,4 @@
 locations:
 - code_source:
-    package_name: population_analysis
+    package_name: my_project
   location_name: plusdemo
